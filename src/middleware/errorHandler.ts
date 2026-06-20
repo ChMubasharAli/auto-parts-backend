@@ -24,10 +24,10 @@ export const errorHandler = (
 
   // Prisma unique constraint violation
   if (err instanceof Prisma.PrismaClientKnownRequestError) {
-    if (err.code === "P2002") {
+    if ((err as any).code === "P2002") {
       return sendError(res, 409, "A record with this value already exists");
     }
-    if (err.code === "P2025") {
+    if ((err as any).code === "P2025") {
       return sendError(res, 404, "Record not found");
     }
     return sendError(res, 500, "Database error");
