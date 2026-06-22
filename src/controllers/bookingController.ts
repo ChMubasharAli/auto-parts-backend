@@ -135,19 +135,19 @@ export const createBooking = async (req: Request, res: Response) => {
   });
 
   // Send confirmation email
-  await sendEmail({
-    to: customer.email,
-    subject: "Booking Confirmation - West Main Tire & Lube",
-    html: getBookingConfirmationTemplate(
-      customer.name,
-      result.id,
-      appointmentDate,
-      startTime,
-      services.map((s) => s.name),
-      totalDuration,
-      totalPrice.toFixed(2),
-    ),
-  });
+  // await sendEmail({
+  //   to: customer.email,
+  //   subject: "Booking Confirmation - West Main Tire & Lube",
+  //   html: getBookingConfirmationTemplate(
+  //     customer.name,
+  //     result.id,
+  //     appointmentDate,
+  //     startTime,
+  //     services.map((s) => s.name),
+  //     totalDuration,
+  //     totalPrice.toFixed(2),
+  //   ),
+  // });
 
   return sendResponse(res, 201, "Booking created", result);
 };
