@@ -38,8 +38,9 @@ model Service {
   id        String   @id @default(cuid())
   name      String
   duration  Int      // minutes
-  price     Decimal  @db.Decimal(10, 2)
+  description String?  // Made optional
   isActive  Boolean  @default(true)
+  price       Decimal? @db.Decimal(10, 2) // Made optional
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

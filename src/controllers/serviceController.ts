@@ -29,13 +29,14 @@ export const getServiceById = async (req: Request, res: Response) => {
 };
 
 export const createService = async (req: Request, res: Response) => {
-  const { name, duration, price, isActive } = req.body;
+  const { name, description, duration, price, isActive } = req.body;
 
   const service = await prisma.service.create({
     data: {
       name,
+      description: description || null,
       duration,
-      price,
+      price: price || null,
       isActive: isActive ?? true,
     },
   });
@@ -45,7 +46,7 @@ export const createService = async (req: Request, res: Response) => {
 
 export const updateService = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { name, duration, price, isActive } = req.body;
+  const { name, description, duration, price, isActive } = req.body;
 
   if (!id || typeof id !== "string") {
     return sendError(res, 400, "Invalid ID format provided");
@@ -55,8 +56,9 @@ export const updateService = async (req: Request, res: Response) => {
     where: { id },
     data: {
       ...(name !== undefined && { name }),
+      ...(description !== undefined && { description: description || null }),
       ...(duration !== undefined && { duration }),
-      ...(price !== undefined && { price }),
+      ...(price !== undefined && { price: price || null }),
       ...(isActive !== undefined && { isActive }),
     },
   });
