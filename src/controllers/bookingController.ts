@@ -106,6 +106,14 @@ export const createBooking = async (req: Request, res: Response) => {
       data: customer,
     });
 
+    // FIX: Type the appointmentServices data properly
+    const appointmentServicesData = services.map((s) => ({
+      serviceId: s.id,
+      serviceName: s.name,
+      duration: s.duration,
+      price: s.price,
+    }));
+
     const appointment = await tx.appointment.create({
       data: {
         customerId: newCustomer.id,
@@ -117,12 +125,7 @@ export const createBooking = async (req: Request, res: Response) => {
         status: AppointmentStatus.Confirmed,
         notes,
         appointmentServices: {
-          create: services.map((s) => ({
-            serviceId: s.id,
-            serviceName: s.name,
-            duration: s.duration,
-            price: s.price,
-          })),
+          create: appointmentServicesData as any, // Type assertion to fix the error
         },
       },
       include: {
