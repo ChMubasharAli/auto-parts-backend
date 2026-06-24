@@ -76,7 +76,7 @@ export const getBookingCancellationTemplate = (
       <p>Hi ${customerName},</p>
       <p>We regret to inform you that your appointment has been cancelled.</p>
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-        <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Booking #</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${bookingNumber}</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Customer Name</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${bookingNumber}</td></tr>
         <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Reason</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${cancelReason}</td></tr>
       </table>
       <p>We apologize for any inconvenience. Please contact us to reschedule.</p>

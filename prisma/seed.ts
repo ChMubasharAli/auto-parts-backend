@@ -11,15 +11,15 @@ async function main() {
   // 1. Create Admin
   const adminPassword = await bcryptjs.hash("admin123", 12);
   const admin = await prisma.admin.upsert({
-    where: { email: "admin@westmaintire.com" },
+    where: { email: "kenelson1909p@yahoo.com.sg" },
     update: {},
     create: {
       name: "System Administrator",
-      email: "admin@westmaintire.com",
+      email: "kenelson1909p@yahoo.com.sg",
       password: adminPassword,
     },
   });
-  console.log("✅ Admin created:", admin.email, "(password: admin123)");
+  console.log("✅ Admin created:", admin.email, "(password: Admin@1234)");
 
   // 2. Create Default Schedule (Mon-Fri: 7AM-5PM, Sat-Sun: Closed)
   const defaultSchedule = [
