@@ -6,6 +6,7 @@ import scheduleRoutes from "./scheduleRoutes";
 import settingsRoutes from "./settingsRoutes";
 import dashboardRoutes from "./dashboardRoutes";
 import { seedDatabase } from "../controllers/seedContoller";
+import { resetDatabase } from "../controllers/resetController";
 
 const router = Router();
 
@@ -16,5 +17,6 @@ router.use("/schedule", scheduleRoutes);
 router.use("/settings", settingsRoutes);
 router.use("/dashboard", dashboardRoutes);
 router.post("/seed", seedDatabase);
+router.post("/reset/db/development", resetDatabase);
 
 export default router;
